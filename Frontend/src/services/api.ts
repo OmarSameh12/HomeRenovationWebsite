@@ -28,7 +28,7 @@ export interface ServiceResponse {
 
 export type ServiceInput = Omit<ServiceResponse, "id">;
 
-const API_BASE_URL = "http://127.0.0.1:8000";
+const API_BASE_URL = "https://home-renovation-website-beta.vercel.app";
 
 /* Services - Real Backend */
 export async function getServices(): Promise<ServiceResponse[]> {
