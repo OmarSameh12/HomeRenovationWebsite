@@ -49,6 +49,7 @@ export const Route = createFileRoute("/admin")({
   }),
   component: AdminPage,
 });
+
 const dateFormatter = new Intl.DateTimeFormat("en-GB", { dateStyle: "medium" });
 
 /** Format a backend ISO datetime string; returns "—" for missing/invalid values instead of throwing. */
@@ -56,7 +57,6 @@ function formatDate(value: string | null | undefined): string {
   const date = new Date(value ?? "");
   return Number.isNaN(date.getTime()) ? "—" : dateFormatter.format(date);
 }
-
 
 function AdminPage() {
   const queryClient = useQueryClient();
