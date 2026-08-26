@@ -39,6 +39,15 @@ export async function getServices(): Promise<ServiceResponse[]> {
   return response.json();
 }
 
+/** Admin listing: every service, including inactive ones. */
+export async function getAdminServices(): Promise<ServiceResponse[]> {
+  const response = await fetch(`${API_BASE_URL}/api/admin/services`);
+  if (!response.ok) {
+    throw new Error(`Failed to fetch admin services: ${response.status} ${response.statusText}`);
+  }
+  return response.json();
+}
+
 export async function getServiceBySlug(slug: string): Promise<ServiceResponse | undefined> {
   const response = await fetch(`${API_BASE_URL}/api/services/${slug}`);
   if (response.status === 404) {

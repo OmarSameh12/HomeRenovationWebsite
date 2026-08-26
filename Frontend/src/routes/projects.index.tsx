@@ -37,7 +37,7 @@ function ProjectsPage() {
       <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {isLoading
           ? Array.from({ length: 6 }).map((_, i) => <Skeleton key={i} className="h-80 rounded-xl" />)
-          : (data ?? []).map((p) => <ProjectCard key={p.id} project={p} />)}
+          : (data ?? []).filter((p) => p.is_featured).map((p) => <ProjectCard key={p.id} project={p} />)}
       </div>
     </Section>
   );

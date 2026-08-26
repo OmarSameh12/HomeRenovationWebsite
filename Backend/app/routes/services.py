@@ -2,6 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
 from app.database import SessionLocal
+from app.models.service import Service
 from app.schemas.service import (
     ServiceCreate,
     ServiceResponse,
@@ -9,6 +10,7 @@ from app.schemas.service import (
 )
 from app.services.service_service import (
     get_services,
+    get_all_services,
     get_service_by_slug,
     create_service,
     update_service,
@@ -42,6 +44,15 @@ def read_service(slug: str, db: Session = Depends(get_db)):
         )
 
     return service
+
+
+@router.get(
+    "/admin/services",
+    response_model=list[ServiceResponse],
+)
+def read_admin_services(db: Session = Depends(get_db)):
+    """Return all services, including inactive ones."""
+    return get_all_services(db)
 
 
 @router.post(

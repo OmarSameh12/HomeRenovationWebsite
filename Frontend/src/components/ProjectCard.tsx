@@ -5,7 +5,7 @@ import type { Project } from "@/services/api";
 
 export function ProjectCard({ project }: { project: Project }) {
   return (
-    <Link to="/projects/$id" params={{ id: project.id }} className="block">
+    <Link to="/projects/$id" params={{ id: String(project.id) }} className="block">
       <Card className="group h-full overflow-hidden py-0 transition-shadow hover:shadow-lg">
         <div className="aspect-[4/3] overflow-hidden bg-muted">
           <img

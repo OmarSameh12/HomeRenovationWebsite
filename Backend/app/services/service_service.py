@@ -15,6 +15,13 @@ def get_services(db: Session) -> list[Service]:
     return list(db.scalars(statement).all())
 
 
+def get_all_services(db: Session) -> list[Service]:
+    """Admin listing: every service, including inactive ones."""
+    statement = select(Service).order_by(Service.id)
+
+    return list(db.scalars(statement).all())
+
+
 def get_service_by_slug(db: Session, slug: str) -> Service | None:
     statement = select(Service).where(
         Service.slug == slug,

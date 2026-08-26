@@ -10,6 +10,7 @@ const navLinks = [
   { label: "Projects", to: "/projects" },
   { label: "About", to: "/about" },
   { label: "Contact", to: "/contact" },
+  { label: "Admin", to: "/admin" },
 ] as const;
 
 function DeveloperBanner() {

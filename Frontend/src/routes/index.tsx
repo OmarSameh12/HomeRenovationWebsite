@@ -40,7 +40,7 @@ function Home() {
   const testimonials = useQuery({ queryKey: ["testimonials"], queryFn: getTestimonials });
   const faqs = useQuery({ queryKey: ["faqs"], queryFn: getFaqs });
 
-  const featured = (projects.data ?? []).slice(0, 3);
+  const featured = (projects.data ?? []).filter((p) => p.is_featured).slice(0, 3);
   const showcase = projects.data?.[0];
 
   return (
